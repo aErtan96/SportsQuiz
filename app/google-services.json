@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "346519193648",
+    "firebase_url": "https://sportsquiz-15330.firebaseio.com",
+    "project_id": "sportsquiz-15330",
+    "storage_bucket": "sportsquiz-15330.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:346519193648:android:221d37d07be6f1df1f45f5",
+        "android_client_info": {
+          "package_name": "com.ataberkertan.sportsquiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "346519193648-8065h3eaqmea0sstnpv834u7o91r1pe5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAzUOSEZD9R1PNcgo86aiBm0n1OfKvOK38"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "346519193648-8065h3eaqmea0sstnpv834u7o91r1pe5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:id="@+id/footballText"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:text="Futbol"
+        app:layout_constraintBottom_toTopOf="@+id/motorsportsImage"
+        app:layout_constraintEnd_toStartOf="@+id/basketballText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/footballImage" />
+
+    <TextView
+        android:id="@+id/tennisText"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="80dp"
+        android:gravity="center"
+        android:text="Tenis"
+        app:layout_constraintBottom_toBottomOf="@+id/motorsportsText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/motorsportsText"
+        app:layout_constraintTop_toTopOf="@+id/motorsportsText" />
+
+    <TextView
+        android:id="@+id/motorsportsText"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="113dp"
+        android:gravity="center"
+        android:text="Motorsporları"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tennisText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/motorsportsImage" />
+
+    <TextView
+        android:id="@+id/basketballText"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="215dp"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="189dp"
+        android:gravity="center"
+        android:text="Basketbol"
+        app:layout_constraintBottom_toBottomOf="@+id/tennisText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/footballText"
+        app:layout_constraintTop_toTopOf="@+id/welcomeText" />
+
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="350dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="23dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginEnd="23dp"
+        android:layout_marginBottom="60dp"
+        android:gravity="center"
+        android:textAlignment="textStart"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/footballImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/basketballImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="80dp"
+        android:onClick="basketballClicked"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/footballImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/footballImage"
+        app:layout_constraintTop_toTopOf="@+id/footballImage"
+        app:srcCompat="@drawable/basketball" />
+
+    <ImageButton
+        android:id="@+id/footballImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="15dp"
+        android:onClick="footballClicked"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/footballText"
+        app:layout_constraintEnd_toStartOf="@+id/basketballImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeText"
+        app:srcCompat="@drawable/football" />
+
+    <ImageButton
+        android:id="@+id/motorsportsImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginEnd="75dp"
+        android:layout_marginBottom="23dp"
+        android:onClick="motorsportsClicked"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/motorsportsText"
+        app:layout_constraintEnd_toStartOf="@+id/tennisImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/footballText"
+        app:srcCompat="@drawable/motorsports" />
+
+    <ImageButton
+        android:id="@+id/tennisImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="80dp"
+        android:onClick="tennisClicked"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="@+id/motorsportsImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/motorsportsImage"
+        app:layout_constraintTop_toTopOf="@+id/motorsportsImage"
+        app:srcCompat="@drawable/tennis" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
