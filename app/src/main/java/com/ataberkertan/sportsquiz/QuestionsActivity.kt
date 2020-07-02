@@ -689,32 +689,29 @@ class QuestionsActivity : AppCompatActivity() {
                             option1clicked.setOnClickListener {
 
                                 if(basketballOptions1[questionNumber] == basketballAnswers[questionNumber]){
+                                    questionNumber++
 
+                                    if(questionNumber == basketballQuestions.size){
+                                        countdownTimer.cancel()
+                                        val alert = AlertDialog.Builder(this@QuestionsActivity)
+                                        alert.setTitle("Bütün Soruları Bildiniz")
 
-
+                                        alert.setNeutralButton("Menüye Dön"){dialog, which ->
+                                            val intent = Intent(applicationContext,LoginActivity::class.java)
+                                            startActivity(intent)
+                                        }
+                                        alert.show()
+                                    }else{
                                         questionText.text = basketballQuestions[questionNumber+1]
                                         option1Text.text = basketballOptions1[questionNumber+1]
                                         option2Text.text = basketballOptions2[questionNumber+1]
                                         option3Text.text = basketballOptions3[questionNumber+1]
                                         option4Text.text = basketballOptions4[questionNumber+1]
 
-                                        questionNumber++
+
                                         countdownTimer.cancel()
                                         countdownTimer.start()
-
-                                        if(questionNumber == basketballQuestions.size){
-                                            countdownTimer.cancel()
-                                            val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                            alert.setTitle("Bütün Soruları Bildiniz")
-
-                                            alert.setNeutralButton("Menüye Dön"){dialog, which ->
-                                                val intent = Intent(applicationContext,LoginActivity::class.java)
-                                                startActivity(intent)
-                                            }
-                                            alert.show()
-
-
-                                        }
+                                    }
 
 
 
@@ -735,34 +732,28 @@ class QuestionsActivity : AppCompatActivity() {
                             val option2clicked = findViewById<TextView>(R.id.option2Text)
                             option2clicked.setOnClickListener {
                                 if(basketballOptions2[questionNumber] == basketballAnswers[questionNumber]){
+                                    questionNumber++
+                                    if(questionNumber == basketballQuestions.size){
+                                        countdownTimer.cancel()
+                                        val alert = AlertDialog.Builder(this@QuestionsActivity)
+                                        alert.setTitle("Bütün Soruları Bildiniz")
 
-
-
-
+                                        alert.setNeutralButton("Menüye Dön"){dialog, which ->
+                                            val intent = Intent(applicationContext,LoginActivity::class.java)
+                                            startActivity(intent)
+                                        }
+                                        alert.show()
+                                    }else{
                                         questionText.text = basketballQuestions[questionNumber+1]
                                         option1Text.text = basketballOptions1[questionNumber+1]
                                         option2Text.text = basketballOptions2[questionNumber+1]
                                         option3Text.text = basketballOptions3[questionNumber+1]
                                         option4Text.text = basketballOptions4[questionNumber+1]
 
-                                        questionNumber++
+
                                         countdownTimer.cancel()
                                         countdownTimer.start()
-
-                                        if(questionNumber == basketballQuestions.size){
-                                            countdownTimer.cancel()
-                                            val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                            alert.setTitle("Bütün Soruları Bildiniz")
-
-                                            alert.setNeutralButton("Menüye Dön"){dialog, which ->
-                                                val intent = Intent(applicationContext,LoginActivity::class.java)
-                                                startActivity(intent)
-                                            }
-                                            alert.show()
-
-
-                                        }
-
+                                    }
 
 
                                 }else {
@@ -782,30 +773,31 @@ class QuestionsActivity : AppCompatActivity() {
                             val option3clicked = findViewById<TextView>(R.id.option3Text)
                             option3clicked.setOnClickListener {
                                 if(basketballOptions3[questionNumber] == basketballAnswers[questionNumber]){
+                                    questionNumber++
+                                    if(questionNumber == basketballQuestions.size){
+                                        countdownTimer.cancel()
+                                        val alert = AlertDialog.Builder(this@QuestionsActivity)
+                                        alert.setTitle("Bütün Soruları Bildiniz")
 
+                                        alert.setNeutralButton("Menüye Dön"){dialog, which ->
+                                            val intent = Intent(applicationContext,LoginActivity::class.java)
+                                            startActivity(intent)
+                                        }
+                                        alert.show()
+                                    }else{
                                         questionText.text = basketballQuestions[questionNumber+1]
                                         option1Text.text = basketballOptions1[questionNumber+1]
                                         option2Text.text = basketballOptions2[questionNumber+1]
                                         option3Text.text = basketballOptions3[questionNumber+1]
                                         option4Text.text = basketballOptions4[questionNumber+1]
 
-                                        questionNumber++
+
                                         countdownTimer.cancel()
                                         countdownTimer.start()
-
-                                        if(questionNumber == basketballQuestions.size){
-                                            countdownTimer.cancel()
-                                            val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                            alert.setTitle("Bütün Soruları Bildiniz")
-
-                                            alert.setNeutralButton("Menüye Dön"){dialog, which ->
-                                                val intent = Intent(applicationContext,LoginActivity::class.java)
-                                                startActivity(intent)
-                                            }
-                                            alert.show()
+                                    }
 
 
-                                        }
+
 
 
                                 }else {
@@ -825,31 +817,28 @@ class QuestionsActivity : AppCompatActivity() {
                             val option4clicked = findViewById<TextView>(R.id.option4Text)
                             option4clicked.setOnClickListener {
                                 if(basketballOptions4[questionNumber] == basketballAnswers[questionNumber]){
+                                    questionNumber++
+                                    if(questionNumber == basketballQuestions.size){
+                                        countdownTimer.cancel()
+                                        val alert = AlertDialog.Builder(this@QuestionsActivity)
+                                        alert.setTitle("Bütün Soruları Bildiniz")
 
-
+                                        alert.setNeutralButton("Menüye Dön"){dialog, which ->
+                                            val intent = Intent(applicationContext,LoginActivity::class.java)
+                                            startActivity(intent)
+                                        }
+                                        alert.show()
+                                    }else{
                                         questionText.text = basketballQuestions[questionNumber+1]
                                         option1Text.text = basketballOptions1[questionNumber+1]
                                         option2Text.text = basketballOptions2[questionNumber+1]
                                         option3Text.text = basketballOptions3[questionNumber+1]
                                         option4Text.text = basketballOptions4[questionNumber+1]
 
-                                        questionNumber++
+
                                         countdownTimer.cancel()
                                         countdownTimer.start()
-
-                                        if(questionNumber == basketballQuestions.size){
-                                            countdownTimer.cancel()
-                                            val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                            alert.setTitle("Bütün Soruları Bildiniz")
-
-                                            alert.setNeutralButton("Menüye Dön"){dialog, which ->
-                                                val intent = Intent(applicationContext,LoginActivity::class.java)
-                                                startActivity(intent)
-                                            }
-                                            alert.show()
-
-
-                                        }
+                                    }
 
 
 
