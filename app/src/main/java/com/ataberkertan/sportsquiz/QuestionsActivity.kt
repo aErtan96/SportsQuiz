@@ -25,6 +25,7 @@ class QuestionsActivity : AppCompatActivity() {
 
     private lateinit var auth:FirebaseAuth
     private lateinit var db: FirebaseFirestore
+    lateinit var countdownTimer : CountDownTimer
 
     var runnable = Runnable{ }
     var handler = Handler()
@@ -43,6 +44,8 @@ class QuestionsActivity : AppCompatActivity() {
     var basketballOptions3: ArrayList<String?> = ArrayList()
     var basketballOptions4: ArrayList<String?> = ArrayList()
     var basketballAnswers: ArrayList<String?> = ArrayList()
+
+
 
 
 
@@ -641,6 +644,13 @@ class QuestionsActivity : AppCompatActivity() {
 
                         val documents = snapshot.documents
 
+                        basketballQuestions.clear()
+                        basketballOptions1.clear()
+                        basketballOptions2.clear()
+                        basketballOptions3.clear()
+                        basketballOptions4.clear()
+                        basketballAnswers.clear()
+
                         for (document in documents){
 
                             val question = document.get("question") as? String
@@ -658,6 +668,7 @@ class QuestionsActivity : AppCompatActivity() {
                             basketballOptions3.add(option3)
                             basketballOptions4.add(option4)
                             basketballAnswers.add(answer)
+
 
 
                         }
@@ -681,7 +692,6 @@ class QuestionsActivity : AppCompatActivity() {
 
 
 
-
                                         questionText.text = basketballQuestions[questionNumber+1]
                                         option1Text.text = basketballOptions1[questionNumber+1]
                                         option2Text.text = basketballOptions2[questionNumber+1]
@@ -689,10 +699,27 @@ class QuestionsActivity : AppCompatActivity() {
                                         option4Text.text = basketballOptions4[questionNumber+1]
 
                                         questionNumber++
+                                        countdownTimer.cancel()
+                                        countdownTimer.start()
+
+                                        if(questionNumber == basketballQuestions.size){
+                                            countdownTimer.cancel()
+                                            val alert = AlertDialog.Builder(this@QuestionsActivity)
+                                            alert.setTitle("Bütün Soruları Bildiniz")
+
+                                            alert.setNeutralButton("Menüye Dön"){dialog, which ->
+                                                val intent = Intent(applicationContext,LoginActivity::class.java)
+                                                startActivity(intent)
+                                            }
+                                            alert.show()
+
+
+                                        }
 
 
 
                                 }else {
+                                    countdownTimer.cancel()
                                     option1Text.setBackgroundColor(Color.parseColor("#ff0000"))
                                     val alert = AlertDialog.Builder(this@QuestionsActivity)
                                     alert.setTitle("Yanlış Cevap")
@@ -719,10 +746,27 @@ class QuestionsActivity : AppCompatActivity() {
                                         option4Text.text = basketballOptions4[questionNumber+1]
 
                                         questionNumber++
+                                        countdownTimer.cancel()
+                                        countdownTimer.start()
+
+                                        if(questionNumber == basketballQuestions.size){
+                                            countdownTimer.cancel()
+                                            val alert = AlertDialog.Builder(this@QuestionsActivity)
+                                            alert.setTitle("Bütün Soruları Bildiniz")
+
+                                            alert.setNeutralButton("Menüye Dön"){dialog, which ->
+                                                val intent = Intent(applicationContext,LoginActivity::class.java)
+                                                startActivity(intent)
+                                            }
+                                            alert.show()
+
+
+                                        }
 
 
 
                                 }else {
+                                    countdownTimer.cancel()
                                     option2Text.setBackgroundColor(Color.parseColor("#ff0000"))
                                     val alert = AlertDialog.Builder(this@QuestionsActivity)
                                     alert.setTitle("Yanlış Cevap")
@@ -739,9 +783,6 @@ class QuestionsActivity : AppCompatActivity() {
                             option3clicked.setOnClickListener {
                                 if(basketballOptions3[questionNumber] == basketballAnswers[questionNumber]){
 
-
-
-
                                         questionText.text = basketballQuestions[questionNumber+1]
                                         option1Text.text = basketballOptions1[questionNumber+1]
                                         option2Text.text = basketballOptions2[questionNumber+1]
@@ -749,8 +790,26 @@ class QuestionsActivity : AppCompatActivity() {
                                         option4Text.text = basketballOptions4[questionNumber+1]
 
                                         questionNumber++
+                                        countdownTimer.cancel()
+                                        countdownTimer.start()
+
+                                        if(questionNumber == basketballQuestions.size){
+                                            countdownTimer.cancel()
+                                            val alert = AlertDialog.Builder(this@QuestionsActivity)
+                                            alert.setTitle("Bütün Soruları Bildiniz")
+
+                                            alert.setNeutralButton("Menüye Dön"){dialog, which ->
+                                                val intent = Intent(applicationContext,LoginActivity::class.java)
+                                                startActivity(intent)
+                                            }
+                                            alert.show()
+
+
+                                        }
+
 
                                 }else {
+                                    countdownTimer.cancel()
                                     option3Text.setBackgroundColor(Color.parseColor("#ff0000"))
                                     val alert = AlertDialog.Builder(this@QuestionsActivity)
                                     alert.setTitle("Yanlış Cevap")
@@ -768,8 +827,6 @@ class QuestionsActivity : AppCompatActivity() {
                                 if(basketballOptions4[questionNumber] == basketballAnswers[questionNumber]){
 
 
-
-
                                         questionText.text = basketballQuestions[questionNumber+1]
                                         option1Text.text = basketballOptions1[questionNumber+1]
                                         option2Text.text = basketballOptions2[questionNumber+1]
@@ -777,9 +834,28 @@ class QuestionsActivity : AppCompatActivity() {
                                         option4Text.text = basketballOptions4[questionNumber+1]
 
                                         questionNumber++
+                                        countdownTimer.cancel()
+                                        countdownTimer.start()
+
+                                        if(questionNumber == basketballQuestions.size){
+                                            countdownTimer.cancel()
+                                            val alert = AlertDialog.Builder(this@QuestionsActivity)
+                                            alert.setTitle("Bütün Soruları Bildiniz")
+
+                                            alert.setNeutralButton("Menüye Dön"){dialog, which ->
+                                                val intent = Intent(applicationContext,LoginActivity::class.java)
+                                                startActivity(intent)
+                                            }
+                                            alert.show()
+
+
+                                        }
+
+
 
 
                                 }else {
+                                    countdownTimer.cancel()
                                     option4Text.setBackgroundColor(Color.parseColor("#ff0000"))
                                     val alert = AlertDialog.Builder(this@QuestionsActivity)
                                     alert.setTitle("Yanlış Cevap")
@@ -793,8 +869,8 @@ class QuestionsActivity : AppCompatActivity() {
                             }
 
 
+                            countdownTimer = object : CountDownTimer(21000,1000){
 
-                            object : CountDownTimer(20000,1000){
                                 override fun onFinish() {
                                     handler.removeCallbacks(runnable)
 
