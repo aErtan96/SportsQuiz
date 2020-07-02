@@ -642,6 +642,7 @@ class QuestionsActivity : AppCompatActivity() {
                         val documents = snapshot.documents
 
                         for (document in documents){
+
                             val question = document.get("question") as? String
                             val option1 = document.get("option1") as? String
                             val option2  = document.get("option2") as? String
@@ -665,7 +666,7 @@ class QuestionsActivity : AppCompatActivity() {
 
 
                         var questionNumber = 0
-                        while (questionNumber<3){
+
 
                             questionText.text = basketballQuestions[questionNumber]
                             option1Text.text = basketballOptions1[questionNumber]
@@ -678,7 +679,7 @@ class QuestionsActivity : AppCompatActivity() {
 
                                 if(basketballOptions1[questionNumber] == basketballAnswers[questionNumber]){
 
-                                    option1Text.setBackgroundColor(Color.parseColor("#4dff00"))
+
 
 
                                         questionText.text = basketballQuestions[questionNumber+1]
@@ -686,6 +687,8 @@ class QuestionsActivity : AppCompatActivity() {
                                         option2Text.text = basketballOptions2[questionNumber+1]
                                         option3Text.text = basketballOptions3[questionNumber+1]
                                         option4Text.text = basketballOptions4[questionNumber+1]
+
+                                        questionNumber++
 
 
 
@@ -706,7 +709,7 @@ class QuestionsActivity : AppCompatActivity() {
                             option2clicked.setOnClickListener {
                                 if(basketballOptions2[questionNumber] == basketballAnswers[questionNumber]){
 
-                                    option2Text.setBackgroundColor(Color.parseColor("#4dff00"))
+
 
 
                                         questionText.text = basketballQuestions[questionNumber+1]
@@ -714,6 +717,8 @@ class QuestionsActivity : AppCompatActivity() {
                                         option2Text.text = basketballOptions2[questionNumber+1]
                                         option3Text.text = basketballOptions3[questionNumber+1]
                                         option4Text.text = basketballOptions4[questionNumber+1]
+
+                                        questionNumber++
 
 
 
@@ -734,7 +739,7 @@ class QuestionsActivity : AppCompatActivity() {
                             option3clicked.setOnClickListener {
                                 if(basketballOptions3[questionNumber] == basketballAnswers[questionNumber]){
 
-                                    option3Text.setBackgroundColor(Color.parseColor("#4dff00"))
+
 
 
                                         questionText.text = basketballQuestions[questionNumber+1]
@@ -743,7 +748,7 @@ class QuestionsActivity : AppCompatActivity() {
                                         option3Text.text = basketballOptions3[questionNumber+1]
                                         option4Text.text = basketballOptions4[questionNumber+1]
 
-
+                                        questionNumber++
 
                                 }else {
                                     option3Text.setBackgroundColor(Color.parseColor("#ff0000"))
@@ -762,7 +767,7 @@ class QuestionsActivity : AppCompatActivity() {
                             option4clicked.setOnClickListener {
                                 if(basketballOptions4[questionNumber] == basketballAnswers[questionNumber]){
 
-                                    option4Text.setBackgroundColor(Color.parseColor("#4dff00"))
+
 
 
                                         questionText.text = basketballQuestions[questionNumber+1]
@@ -771,6 +776,7 @@ class QuestionsActivity : AppCompatActivity() {
                                         option3Text.text = basketballOptions3[questionNumber+1]
                                         option4Text.text = basketballOptions4[questionNumber+1]
 
+                                        questionNumber++
 
 
                                 }else {
@@ -785,18 +791,6 @@ class QuestionsActivity : AppCompatActivity() {
                                     alert.show()
                                 }
                             }
-
-
-
-
-
-
-                            questionNumber++
-                        }
-
-
-
-
 
 
 
