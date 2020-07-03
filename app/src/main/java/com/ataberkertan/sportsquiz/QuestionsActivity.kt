@@ -26,6 +26,7 @@ class QuestionsActivity : AppCompatActivity() {
     private lateinit var auth:FirebaseAuth
     private lateinit var db: FirebaseFirestore
     lateinit var countdownTimer : CountDownTimer
+    var score = 0
 
     var runnable = Runnable{ }
     var handler = Handler()
@@ -89,8 +90,6 @@ class QuestionsActivity : AppCompatActivity() {
         db = FirebaseFirestore.getInstance()
 
 
-
-
         val intentFromCategories = intent
         val info = intent.getStringExtra("info")
         if(info.equals("football")){
@@ -152,6 +151,7 @@ class QuestionsActivity : AppCompatActivity() {
                         var questionNumber = 0
 
 
+
                         questionText.text = footballQuestions[questionNumber]
                         option1Text.text = footballOptions1[questionNumber]
                         option2Text.text = footballOptions2[questionNumber]
@@ -163,11 +163,13 @@ class QuestionsActivity : AppCompatActivity() {
 
                             if(footballOptions1[questionNumber] == footballAnswers[questionNumber]){
                                 questionNumber++
+                                score = score +10
+
 
                                 if(questionNumber == footballQuestions.size){
                                     countdownTimer.cancel()
                                     val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                    alert.setTitle("Bütün Soruları Bildiniz")
+                                    alert.setTitle("Skor: "+ score)
 
                                     alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                         val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -192,7 +194,7 @@ class QuestionsActivity : AppCompatActivity() {
                                 countdownTimer.cancel()
                                 option1Text.setBackgroundColor(Color.parseColor("#ff0000"))
                                 val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                alert.setTitle("Yanlış Cevap")
+                                alert.setTitle("Skor:" + score)
 
                                 alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                     val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -206,10 +208,12 @@ class QuestionsActivity : AppCompatActivity() {
                         option2clicked.setOnClickListener {
                             if(footballOptions2[questionNumber] == footballAnswers[questionNumber]){
                                 questionNumber++
+                                score = score +10
+
                                 if(questionNumber == footballQuestions.size){
                                     countdownTimer.cancel()
                                     val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                    alert.setTitle("Bütün Soruları Bildiniz")
+                                    alert.setTitle("Skor: "+ score)
 
                                     alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                         val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -233,7 +237,7 @@ class QuestionsActivity : AppCompatActivity() {
                                 countdownTimer.cancel()
                                 option2Text.setBackgroundColor(Color.parseColor("#ff0000"))
                                 val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                alert.setTitle("Yanlış Cevap")
+                                alert.setTitle("Skor:" + score)
 
                                 alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                     val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -247,10 +251,12 @@ class QuestionsActivity : AppCompatActivity() {
                         option3clicked.setOnClickListener {
                             if(footballOptions3[questionNumber] == footballAnswers[questionNumber]){
                                 questionNumber++
+                                score = score +10
+
                                 if(questionNumber == footballQuestions.size){
                                     countdownTimer.cancel()
                                     val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                    alert.setTitle("Bütün Soruları Bildiniz")
+                                    alert.setTitle("Skor: "+ score)
 
                                     alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                         val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -273,7 +279,7 @@ class QuestionsActivity : AppCompatActivity() {
                                 countdownTimer.cancel()
                                 option3Text.setBackgroundColor(Color.parseColor("#ff0000"))
                                 val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                alert.setTitle("Yanlış Cevap")
+                                alert.setTitle("Skor:" + score)
 
                                 alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                     val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -287,10 +293,12 @@ class QuestionsActivity : AppCompatActivity() {
                         option4clicked.setOnClickListener {
                             if(footballOptions4[questionNumber] == footballAnswers[questionNumber]){
                                 questionNumber++
+                                score = score +10
+
                                 if(questionNumber == footballQuestions.size){
                                     countdownTimer.cancel()
                                     val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                    alert.setTitle("Bütün Soruları Bildiniz")
+                                    alert.setTitle("Skor: "+ score)
 
                                     alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                         val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -316,7 +324,7 @@ class QuestionsActivity : AppCompatActivity() {
                                 countdownTimer.cancel()
                                 option4Text.setBackgroundColor(Color.parseColor("#ff0000"))
                                 val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                alert.setTitle("Yanlış Cevap")
+                                alert.setTitle("Skor:" + score)
 
                                 alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                     val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -367,7 +375,7 @@ class QuestionsActivity : AppCompatActivity() {
 
     fun getBasketballQuestionsFromFireStore(){
 
-        db.collection("BasketballQuestions").limit(5).addSnapshotListener{snapshot,exception ->
+        db.collection("BasketballQuestions").addSnapshotListener{snapshot,exception ->
             if(exception != null){
                 Toast.makeText(applicationContext,exception.localizedMessage.toString(),Toast.LENGTH_LONG).show()
             }else{
@@ -406,6 +414,7 @@ class QuestionsActivity : AppCompatActivity() {
                         var questionNumber = 0
 
 
+
                             questionText.text = basketballQuestions[questionNumber]
                             option1Text.text = basketballOptions1[questionNumber]
                             option2Text.text = basketballOptions2[questionNumber]
@@ -417,11 +426,12 @@ class QuestionsActivity : AppCompatActivity() {
 
                                 if(basketballOptions1[questionNumber] == basketballAnswers[questionNumber]){
                                     questionNumber++
+                                    score = score +10
 
                                     if(questionNumber == basketballQuestions.size){
                                         countdownTimer.cancel()
                                         val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                        alert.setTitle("Bütün Soruları Bildiniz")
+                                        alert.setTitle("Skor: "+ score)
 
                                         alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                             val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -446,7 +456,7 @@ class QuestionsActivity : AppCompatActivity() {
                                     countdownTimer.cancel()
                                     option1Text.setBackgroundColor(Color.parseColor("#ff0000"))
                                     val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                    alert.setTitle("Yanlış Cevap")
+                                    alert.setTitle("Skor: "+ score)
 
                                     alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                         val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -460,10 +470,11 @@ class QuestionsActivity : AppCompatActivity() {
                             option2clicked.setOnClickListener {
                                 if(basketballOptions2[questionNumber] == basketballAnswers[questionNumber]){
                                     questionNumber++
+                                    score = score +10
                                     if(questionNumber == basketballQuestions.size){
                                         countdownTimer.cancel()
                                         val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                        alert.setTitle("Bütün Soruları Bildiniz")
+                                        alert.setTitle("Skor: "+ score)
 
                                         alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                             val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -487,7 +498,7 @@ class QuestionsActivity : AppCompatActivity() {
                                     countdownTimer.cancel()
                                     option2Text.setBackgroundColor(Color.parseColor("#ff0000"))
                                     val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                    alert.setTitle("Yanlış Cevap")
+                                    alert.setTitle("Skor: "+ score)
 
                                     alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                         val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -501,10 +512,11 @@ class QuestionsActivity : AppCompatActivity() {
                             option3clicked.setOnClickListener {
                                 if(basketballOptions3[questionNumber] == basketballAnswers[questionNumber]){
                                     questionNumber++
+                                    score = score +10
                                     if(questionNumber == basketballQuestions.size){
                                         countdownTimer.cancel()
                                         val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                        alert.setTitle("Bütün Soruları Bildiniz")
+                                        alert.setTitle("Skor: "+ score)
 
                                         alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                             val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -527,7 +539,7 @@ class QuestionsActivity : AppCompatActivity() {
                                     countdownTimer.cancel()
                                     option3Text.setBackgroundColor(Color.parseColor("#ff0000"))
                                     val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                    alert.setTitle("Yanlış Cevap")
+                                    alert.setTitle("Skor: "+ score)
 
                                     alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                         val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -541,10 +553,11 @@ class QuestionsActivity : AppCompatActivity() {
                             option4clicked.setOnClickListener {
                                 if(basketballOptions4[questionNumber] == basketballAnswers[questionNumber]){
                                     questionNumber++
+                                    score = score +10
                                     if(questionNumber == basketballQuestions.size){
                                         countdownTimer.cancel()
                                         val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                        alert.setTitle("Bütün Soruları Bildiniz")
+                                        alert.setTitle("Skor: "+ score)
 
                                         alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                             val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -570,7 +583,7 @@ class QuestionsActivity : AppCompatActivity() {
                                     countdownTimer.cancel()
                                     option4Text.setBackgroundColor(Color.parseColor("#ff0000"))
                                     val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                    alert.setTitle("Yanlış Cevap")
+                                    alert.setTitle("Skor: "+ score)
 
                                     alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                         val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -669,11 +682,12 @@ class QuestionsActivity : AppCompatActivity() {
 
                             if(motorsportsOptions1[questionNumber] == motorsportsAnswers[questionNumber]){
                                 questionNumber++
+                                score = score +10
 
                                 if(questionNumber == motorsportsQuestions.size){
                                     countdownTimer.cancel()
                                     val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                    alert.setTitle("Bütün Soruları Bildiniz")
+                                    alert.setTitle("Skor: "+ score)
 
                                     alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                         val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -698,7 +712,7 @@ class QuestionsActivity : AppCompatActivity() {
                                 countdownTimer.cancel()
                                 option1Text.setBackgroundColor(Color.parseColor("#ff0000"))
                                 val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                alert.setTitle("Yanlış Cevap")
+                                alert.setTitle("Skor: "+ score)
 
                                 alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                     val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -712,10 +726,11 @@ class QuestionsActivity : AppCompatActivity() {
                         option2clicked.setOnClickListener {
                             if(motorsportsOptions2[questionNumber] == motorsportsAnswers[questionNumber]){
                                 questionNumber++
+                                score = score +10
                                 if(questionNumber == motorsportsQuestions.size){
                                     countdownTimer.cancel()
                                     val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                    alert.setTitle("Bütün Soruları Bildiniz")
+                                    alert.setTitle("Skor: "+ score)
 
                                     alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                         val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -739,7 +754,7 @@ class QuestionsActivity : AppCompatActivity() {
                                 countdownTimer.cancel()
                                 option2Text.setBackgroundColor(Color.parseColor("#ff0000"))
                                 val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                alert.setTitle("Yanlış Cevap")
+                                alert.setTitle("Skor: "+ score)
 
                                 alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                     val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -753,10 +768,11 @@ class QuestionsActivity : AppCompatActivity() {
                         option3clicked.setOnClickListener {
                             if(motorsportsOptions3[questionNumber] == motorsportsAnswers[questionNumber]){
                                 questionNumber++
+                                score = score +10
                                 if(questionNumber == motorsportsQuestions.size){
                                     countdownTimer.cancel()
                                     val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                    alert.setTitle("Bütün Soruları Bildiniz")
+                                    alert.setTitle("Skor: "+ score)
 
                                     alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                         val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -779,7 +795,7 @@ class QuestionsActivity : AppCompatActivity() {
                                 countdownTimer.cancel()
                                 option3Text.setBackgroundColor(Color.parseColor("#ff0000"))
                                 val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                alert.setTitle("Yanlış Cevap")
+                                alert.setTitle("Skor: "+ score)
 
                                 alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                     val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -793,10 +809,11 @@ class QuestionsActivity : AppCompatActivity() {
                         option4clicked.setOnClickListener {
                             if(motorsportsOptions4[questionNumber] == motorsportsAnswers[questionNumber]){
                                 questionNumber++
+                                score = score +10
                                 if(questionNumber == motorsportsQuestions.size){
                                     countdownTimer.cancel()
                                     val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                    alert.setTitle("Bütün Soruları Bildiniz")
+                                    alert.setTitle("Skor: "+ score)
 
                                     alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                         val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -822,7 +839,7 @@ class QuestionsActivity : AppCompatActivity() {
                                 countdownTimer.cancel()
                                 option4Text.setBackgroundColor(Color.parseColor("#ff0000"))
                                 val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                alert.setTitle("Yanlış Cevap")
+                                alert.setTitle("Skor: "+ score)
 
                                 alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                     val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -920,11 +937,12 @@ class QuestionsActivity : AppCompatActivity() {
 
                             if(tennisOptions1[questionNumber] == tennisAnswers[questionNumber]){
                                 questionNumber++
+                                score = score +10
 
                                 if(questionNumber == tennisQuestions.size){
                                     countdownTimer.cancel()
                                     val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                    alert.setTitle("Bütün Soruları Bildiniz")
+                                    alert.setTitle("Skor: "+ score)
 
                                     alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                         val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -949,7 +967,7 @@ class QuestionsActivity : AppCompatActivity() {
                                 countdownTimer.cancel()
                                 option1Text.setBackgroundColor(Color.parseColor("#ff0000"))
                                 val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                alert.setTitle("Yanlış Cevap")
+                                alert.setTitle("Skor: "+ score)
 
                                 alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                     val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -963,10 +981,11 @@ class QuestionsActivity : AppCompatActivity() {
                         option2clicked.setOnClickListener {
                             if(tennisOptions2[questionNumber] == tennisAnswers[questionNumber]){
                                 questionNumber++
+                                score = score +10
                                 if(questionNumber == tennisQuestions.size){
                                     countdownTimer.cancel()
                                     val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                    alert.setTitle("Bütün Soruları Bildiniz")
+                                    alert.setTitle("Skor: "+ score)
 
                                     alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                         val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -990,7 +1009,7 @@ class QuestionsActivity : AppCompatActivity() {
                                 countdownTimer.cancel()
                                 option2Text.setBackgroundColor(Color.parseColor("#ff0000"))
                                 val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                alert.setTitle("Yanlış Cevap")
+                                alert.setTitle("Skor: "+ score)
 
                                 alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                     val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -1004,10 +1023,11 @@ class QuestionsActivity : AppCompatActivity() {
                         option3clicked.setOnClickListener {
                             if(tennisOptions3[questionNumber] == tennisAnswers[questionNumber]){
                                 questionNumber++
+                                score = score +10
                                 if(questionNumber == tennisQuestions.size){
                                     countdownTimer.cancel()
                                     val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                    alert.setTitle("Bütün Soruları Bildiniz")
+                                    alert.setTitle("Skor: "+ score)
 
                                     alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                         val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -1030,7 +1050,7 @@ class QuestionsActivity : AppCompatActivity() {
                                 countdownTimer.cancel()
                                 option3Text.setBackgroundColor(Color.parseColor("#ff0000"))
                                 val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                alert.setTitle("Yanlış Cevap")
+                                alert.setTitle("Skor: "+ score)
 
                                 alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                     val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -1044,10 +1064,11 @@ class QuestionsActivity : AppCompatActivity() {
                         option4clicked.setOnClickListener {
                             if(tennisOptions4[questionNumber] == tennisAnswers[questionNumber]){
                                 questionNumber++
+                                score = score +10
                                 if(questionNumber == tennisQuestions.size){
                                     countdownTimer.cancel()
                                     val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                    alert.setTitle("Bütün Soruları Bildiniz")
+                                    alert.setTitle("Skor: "+ score)
 
                                     alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                         val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -1073,7 +1094,7 @@ class QuestionsActivity : AppCompatActivity() {
                                 countdownTimer.cancel()
                                 option4Text.setBackgroundColor(Color.parseColor("#ff0000"))
                                 val alert = AlertDialog.Builder(this@QuestionsActivity)
-                                alert.setTitle("Yanlış Cevap")
+                                alert.setTitle("Skor: "+ score)
 
                                 alert.setNeutralButton("Menüye Dön"){dialog, which ->
                                     val intent = Intent(applicationContext,LoginActivity::class.java)
@@ -1121,8 +1142,6 @@ class QuestionsActivity : AppCompatActivity() {
             }
         }
     }
-
-
 
 
 
